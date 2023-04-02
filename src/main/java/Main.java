@@ -16,17 +16,7 @@ public class Main {
 
         Map<Character,Integer> howManyLetters = new HashMap<>();
 
-        for (int i = 0; i < loremLow.length(); i++) {
-            Character ch = loremLow.charAt(i);
-            if (ch.isLetter(ch)) {
-                if (howManyLetters.get(ch) == null) {
-                    howManyLetters.put(ch,1);
-                } else {
-                    Integer quantity = howManyLetters.get(ch);
-                    howManyLetters.put(ch, quantity + 1);
-                }
-            }
-        }
+        textToMap(loremLow, howManyLetters);
 
         System.out.println();
         System.out.println("Исходный текст:");
@@ -49,6 +39,21 @@ public class Main {
         System.out.print(howManyLetters.get((char)lowFreqElem(howManyLetters)));
         System.out.println();
 
+    }
+
+    public static Map<Character, Integer> textToMap(String loremLow, Map<Character, Integer> howManyLetters) {
+        for (int i = 0; i < loremLow.length(); i++) {
+            Character ch = loremLow.charAt(i);
+            if (ch.isLetter(ch)) {
+                if (howManyLetters.get(ch) == null) {
+                    howManyLetters.put(ch,1);
+                } else {
+                    Integer quantity = howManyLetters.get(ch);
+                    howManyLetters.put(ch, quantity + 1);
+                }
+            }
+        }
+        return howManyLetters;
     }
 
 
